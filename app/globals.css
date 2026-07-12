@@ -1,0 +1,330 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-primary: #051f20;
+  --color-brand-secondary: #daac47; /* Gold */
+  --color-brand-accent: #9ed36a;    /* Green */
+  --color-brand-accent-pink: #e68aa0;
+}
+
+:root{
+  --color-brand-primary: #051f20;
+  --color-brand-secondary: #daac47; /* Gold */
+  --color-brand-accent: #9ed36a;    /* Green */
+  --color-brand-accent-pink: #e68aa0;
+}
+
+@layer utilities {
+  /* THE "SOPHISTICATED DEEP" GRADIENT
+     1. Base: Your dark primary.
+     2. Subtle Spotlight: A faint radial glow of the green in the top right.
+     3. Bottom Fade: A smooth transition to deep black/primary.
+  */
+  .bg-premium-dark {
+    background: 
+      radial-gradient(circle at 80% 20%, color-mix(in srgb, var(--color-brand-accent), transparent 85%), transparent 40%),
+      radial-gradient(circle at 10% 80%, color-mix(in srgb, var(--color-brand-secondary), transparent 92%), transparent 30%),
+      var(--color-brand-primary);
+  }
+
+  /* THE "GOLDEN HOUR" BORDER/TEXT GRADIENT
+     Perfect for buttons or cards that need to "pop".
+  */
+  .bg-brand-mesh {
+    background: linear-gradient(
+      110deg, 
+      var(--color-brand-primary) 0%, 
+      #082d2e 40%, 
+      #0a3a3b 100%
+    );
+    position: relative;
+    overflow: hidden;
+  }
+}
+:root {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 9%;
+}
+
+
+body {
+
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .pb-safe-area-inset-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+
+#imageMagniFyer{
+  /* position: absolute; */
+  width: 500px;
+  height: 500px;
+}
+
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox */
+.scrollbar-hide {
+  scrollbar-width: none;
+}
+
+.scrollbar-show::-webkit-scrollbar {
+  display: contents;
+}
+
+/* Hide scrollbar for Firefox */
+.scrollbar-show {
+  scrollbar-width: 2px;
+}
+.vendor-template-container img{
+
+    width: 100%;
+}
+
+.description{
+  ul {
+    padding-left: 0;
+    margin: 0;
+    list-style: disc;
+  }
+  
+  ol {
+    list-style: decimal;
+    padding-left: 1rem;
+    z-index: 0;
+  }
+
+  
+    li {
+    position: relative;
+    padding-left: 1.6rem;
+    margin-bottom: 0.6rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #000;
+  }
+  
+  /* Custom bullet */
+    ul li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    top: 0.1rem;
+    font-size: 1.2rem;
+    color: #000; /* subtle green accent */
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: inherit;
+    color: #1f2937;          /* Dark neutral */
+    line-height: 1.3;
+    margin: 0 0 0.6em 0;
+    font-weight: 600;
+  }
+  
+  /* Main page title */
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  
+  /* Section heading */
+  h2 {
+    font-size: 1.3rem;
+  }
+  
+  /* Sub-section */
+  h3 {
+    font-size: 1.15rem;
+  }
+  
+  /* Minor heading */
+  h4 {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  
+  /* Small heading */
+  h5 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #374151;
+  }
+  
+  /* Smallest heading / label */
+  h6 {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #4b5563;
+  }
+
+  img{
+    width: 100%;
+  }
+  
+}
+
+.menu-root {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+.menu-item {
+}
+
+.menu-item > a,
+.menu-item > span {
+  padding: 8px 16px;
+  display: block;
+  font-weight: 500;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  list-style: none;
+  background: #000;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 100000000000000;
+}
+
+.menu-item:hover > .submenu {
+  display: block;
+}
+
+.menu-mega .submenu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  width: 600px;
+}
+
+.menu-mega .submenu .menu-item {
+  flex: 1 1 45%;
+}
+
+.menu-root {
+  list-style: none;
+}
+
+.menu-item > a, .menu-item > span {
+  display: flex;
+  align-items: center;
+}
+
+.submenu {
+  display: none;
+  z-index: 5000000;
+}
+
+.menu-item.group:hover > .submenu {
+  display: flex;
+  flex-wrap: wrap; /* mega menu columns */
+}
+
+/* Mobile: can hide mega menu initially */
+@media (max-width: 1024px) {
+  .menu-root {
+    flex-direction: column;
+  }
+
+  .submenu {
+    position: static !important;
+    display: block !important;
+    grid-template-columns: 1fr !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+}
+@layer components {
+  .store-description-container {
+    @apply leading-relaxed text-gray-700 space-y-6;
+    color: #4a4a4a;
+    font-size: 1.1rem;
+  }
+
+  /* Image / Banner Styling */
+  .store-description-container img {
+    @apply rounded-sm  my-8 w-full object-cover;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  /* Headings and Bold Text */
+  .store-description-container strong {
+    @apply font-bold;
+    color: var(--color-brand-primary);
+  }
+
+  /* Handled Headless Editor specific tags */
+  .store-description-container ins {
+    @apply no-underline border-b-2;
+    border-color: var(--color-brand-secondary);
+    color: var(--color-brand-primary);
+  }
+
+  .store-description-container em {
+    @apply not-italic font-medium;
+    color: var(--color-brand-primary);
+    font-weight:600
+  }
+
+  /* Paragraph Spacing */
+  .store-description-container p {
+    @apply mb-4;
+
+    
+  }
+
+  /* List Styling (Unordered) */
+  .store-description-container ul {
+    @apply space-y-3 my-6 list-none pl-0;
+  }
+
+  .store-description-container ul li {
+    @apply relative pl-8;
+  }
+
+  .store-description-container ul li::before {
+    content: "✦";
+    @apply absolute left-2 font-bold;
+    color: var(--color-brand-primary);
+  }
+
+  /* List Styling (Ordered) */
+  .store-description-container ol {
+    @apply space-y-4 my-6 pl-6;
+    list-style-type: decimal;
+  }
+
+  .store-description-container ol li {
+    @apply pl-2;
+  }
+
+  .store-description-container ol li::marker {
+    @apply font-bold;
+    color: var(--color-brand-primary);
+  }
+
+  /* Link Styling */
+  .store-description-container a {
+    @apply underline decoration-2 underline-offset-4 transition-colors;
+    color: var(--color-brand-secondary);
+  }
+
+  .store-description-container a:hover {
+    color: var(--color-brand-primary);
+  }
+}

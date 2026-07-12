@@ -1,0 +1,285 @@
+{
+    "featured": false,
+    "product_status": "Active",
+    "collections": [
+        {
+            "dynamic_collection": {
+                "field": "DISCOUNT_PERCENTAGE",
+                "condition": "$lte",
+                "value": 19
+            },
+            "is_dynamic_collection": true,
+            "published_status": "PUBLISHED",
+            "_id": "6916e1953270636e147194bb",
+            "name": "Cars",
+            "slug": "cars",
+            "description": "<p>VEry good cars&nbsp;</p>\n<img src=\"<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"utf-8\">\n<title>Error</title>\n</head>\n<body>\n<pre>Cannot POST /collections/add</pre>\n</body>\n</html>\n\" alt=\"undefined\" style=\"height: auto;width: auto\"/>\n<p></p>\n",
+            "meta_title": "kuch bhi ",
+            "meta_keywords": "kabhi bhi",
+            "meta_description": "Kahi bhi ",
+            "created_by": "6909e6acbd26cf51a471715f",
+            "createdAt": "2025-11-14T08:00:21.587Z",
+            "updatedAt": "2025-11-14T10:47:58.005Z",
+            "collection_id": 1001,
+            "__v": 0,
+            "updated_by": "6909e6acbd26cf51a471715f"
+        }
+    ],
+    "media": [
+        "/uploads\\1764057800499-m5-exterior-right-front-three-quarter-11.avif",
+        "/uploads\\1764057809088-m5-interior-drive-mode-buttons-terrain-selector.avif",
+        "/uploads\\1764057809092-m5-exterior-front-view.avif",
+        "/uploads\\1764057809100-m5-exterior-left-front-three-quarter.avif",
+        "/uploads\\1764057809102-m5-exterior-left-side-view.avif",
+        "/uploads\\1764057809109-m5-exterior-rear-view.avif",
+        "/uploads\\1764057809114-m5-exterior-right-rear-three-quarter.avif",
+        "/uploads\\1764057809115-m5-exterior-right-front-three-quarter-10.avif"
+    ],
+    "sale_price": 20000000,
+    "sale_price_vendor": 0,
+    "tax": 28,
+    "in_stock": true,
+    "stock": 100,
+    "have_multiple_sizes": false,
+    "sizes": [],
+    "is_variable_product": true,
+    "reviews": [],
+    "cod_available": true,
+    "return_available": true,
+    "exchange_available": true,
+    "published_status": "PUBLISHED",
+    "_id": "69257d7728468838b0a314d0",
+    "name": "BMW M5",
+    "product_category": {
+        "commission": 30,
+        "published_status": "PUBLISHED",
+        "_id": "691722913a8ee43f60c37dc3",
+        "name": "Bike ",
+        "slug": "bike",
+        "product_collection": "6916dffe3270636e147194ba",
+        "image": "/uploads\\1763123839213-5.jpeg",
+        "meta_title": "4i34432094",
+        "meta_description": "wjdewjfdiewjl",
+        "meta_keywords": "kdmjwskl",
+        "created_by": "6909e6acbd26cf51a471715f",
+        "createdAt": "2025-11-14T12:37:37.550Z",
+        "updatedAt": "2025-11-17T06:49:10.489Z",
+        "productcategory_id": 1000,
+        "__v": 0,
+        "updated_by": "6909e6acbd26cf51a471715f"
+    },
+    "description": "<p>The new BMW M5 ditches the V8 engine for a 2.0-litre turbo-hybrid powertrain. But it's still a thoroughbred M, filled to the brim with performance features, aggressive styling, and a myriad of M-specific elements in a sleeper four-door sedan package. Its can go from zero to 100kmph in just 3.5 seconds and has a top speed of 305kmph.</p>\n",
+    "regular_price": 25000000,
+    "sku": "#243567890765SDFGH",
+    "weight": 750,
+    "length": 3767,
+    "width": 1766,
+    "height": 1535,
+    "variation_attrs": [
+        {
+            "_id": "69257d7728468838b0a314d1",
+            "label": "Color",
+            "options": [
+                {
+                    "_id": "69257d7728468838b0a314d2",
+                    "value": "Ocena Blue"
+                },
+                {
+                    "_id": "69257d7728468838b0a314d3",
+                    "value": "Supernova Copper"
+                },
+                {
+                    "_id": "69257d7728468838b0a314d4",
+                    "value": "Tornado Blue"
+                },
+                {
+                    "_id": "69257d7728468838b0a314d5",
+                    "value": "Arizona Blue"
+                },
+                {
+                    "_id": "69257d7728468838b0a314d6",
+                    "value": "Pristine White"
+                }
+            ]
+        }
+    ],
+    "variations": [
+        {
+            "stock": 3434242424444522,
+            "media": [
+                "/uploads\\1764061096640-m5-exterior-front-view.avif",
+                "/uploads\\1764061101695-m5-exterior-left-front-three-quarter.avif"
+            ],
+            "_id": "69257d7728468838b0a314d7",
+            "regular_price": "25000000",
+            "sale_price": "20000000",
+            "options": [
+                {
+                    "_id": "69257d7728468838b0a314d8",
+                    "label": "Color",
+                    "value": "Ocena Blue"
+                }
+            ],
+            "in_stock": "true",
+            "sku": "#243567890765SDFGH-1"
+        },
+        {
+            "stock": -10,
+            "media": [
+                "/uploads\\1764061106860-m5-exterior-left-front-three-quarter.avif"
+            ],
+            "_id": "69257d7728468838b0a314d9",
+            "regular_price": "25000000",
+            "sale_price": "20000000",
+            "options": [
+                {
+                    "_id": "69257d7728468838b0a314da",
+                    "label": "Color",
+                    "value": "Supernova Copper"
+                }
+            ],
+            "in_stock": "true",
+            "sku": "#243567890765SDFGH-2"
+        },
+        {
+            "stock": 100,
+            "media": [
+                "/uploads\\1764061115529-m5-exterior-left-side-view.avif"
+            ],
+            "_id": "69257d7728468838b0a314db",
+            "regular_price": "25000000",
+            "sale_price": "20000000",
+            "options": [
+                {
+                    "_id": "69257d7728468838b0a314dc",
+                    "label": "Color",
+                    "value": "Tornado Blue"
+                }
+            ],
+            "in_stock": "true",
+            "sku": "#243567890765SDFGH-3"
+        },
+        {
+            "stock": 100,
+            "media": [
+                "/uploads\\1764061123768-m5-exterior-right-front-three-quarter-11.avif"
+            ],
+            "_id": "69257d7728468838b0a314dd",
+            "regular_price": "25000000",
+            "sale_price": "20000000",
+            "options": [
+                {
+                    "_id": "69257d7728468838b0a314de",
+                    "label": "Color",
+                    "value": "Arizona Blue"
+                }
+            ],
+            "in_stock": "true",
+            "sku": "#243567890765SDFGH-4"
+        },
+        {
+            "stock": 100,
+            "media": [
+                "/uploads\\1764061130810-m5-exterior-left-front-three-quarter.avif"
+            ],
+            "_id": "69257d7728468838b0a314df",
+            "regular_price": "25000000",
+            "sale_price": "20000000",
+            "options": [
+                {
+                    "_id": "69257d7728468838b0a314e0",
+                    "label": "Color",
+                    "value": "Pristine White"
+                }
+            ],
+            "in_stock": "true",
+            "sku": "#243567890765SDFGH-5"
+        }
+    ],
+    "slug": "bmw-m5-1003",
+    "specifications": [
+        {
+            "_id": "69257d7728468838b0a314e1",
+            "label": "Fuel Type",
+            "value": "Fuel Type\tPlug-in Hybrid (Electric + Petrol)"
+        },
+        {
+            "_id": "69257d7728468838b0a314e2",
+            "label": "Engine",
+            "value": "4395 cc"
+        },
+        {
+            "_id": "69257d7728468838b0a314e3",
+            "label": "Transmission",
+            "value": "Automatic"
+        },
+        {
+            "_id": "69257d7728468838b0a314e4",
+            "label": "Mileage (User Reported)",
+            "value": "14kmpl"
+        },
+        {
+            "_id": "69257d7728468838b0a314e5",
+            "label": "Power",
+            "value": "\t717 bhp"
+        },
+        {
+            "_id": "69257d7728468838b0a314e6",
+            "label": "Torque",
+            "value": "1000 Nm"
+        }
+    ],
+    "vendor": {
+        "vendor": {
+            "profile_status": "APPROVED",
+            "store_active": true,
+            "store_name": "qwerty",
+            "store_description": "<p></p>\n",
+            "gst_certificate": "/uploads\\1763538796722-KSHITIJ_CodeForge_Brochure4.pdf.pdf",
+            "gst_no": "789654ASDFG",
+            "pickup_address": [
+                {
+                    "add_to_shiprocket": false,
+                    "_id": "691d777f0cf06f452451fcc2",
+                    "address_1": "DBWHBWHD",
+                    "address_2": "WQDBWQ",
+                    "pin": "1234523"
+                }
+            ]
+        },
+        "role": "VENDOR",
+        "franchise_state": [],
+        "published_status": "PUBLISHED",
+        "_id": "691d777f0cf06f452451fcc1",
+        "name": "Tia",
+        "email": "Tia@gmail.com",
+        "phone": "123456789098",
+        "username": "Tia@gmail.com",
+        "address": [],
+        "createdAt": "2025-11-19T07:53:35.879Z",
+        "updatedAt": "2025-11-25T07:41:17.402Z",
+        "user_id": 8,
+        "__v": 0,
+        "updated_by": "6909e6acbd26cf51a471715f"
+    },
+    "hsn_no": "34AS6DF45",
+    "meta_title": "bmw",
+    "meta_description": "The Bad ass car",
+    "meta_keywords": "BMW m5 competerion supercar family car ",
+    "sub_category": null,
+    "sub_sub_category": null,
+    "created_by": {
+        "_id": "691d777f0cf06f452451fcc1",
+        "name": "Tia"
+    },
+    "product_properties": [],
+    "published_date": "2025-11-25T09:57:11.637Z",
+    "createdAt": "2025-11-25T09:57:11.643Z",
+    "updatedAt": "2025-11-25T10:29:10.588Z",
+    "product_id": 1003,
+    "__v": 0,
+    "updated_by": {
+        "_id": "6909e6acbd26cf51a471715f",
+        "name": "Super Admin"
+    }
+}
