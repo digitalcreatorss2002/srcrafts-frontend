@@ -17,85 +17,79 @@ export default function BannerSlide({ slide, isPriority }) {
       aria-label={slide.title || "Promotion Banner"}
     >
       {isVideoAsset ? (
-        <div >
-            <div className="flex md:hidden">
-              <video
-                src={getImageUrl(slide?.imageMobile)}
-                autoPlay
-                muted
-                loop
-                playsInline
-                /* object-cover + inset-0 ensures it fills the aspect-ratio box */
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 "
-                poster="/images/banner-placeholder.jpg"
-              />
+        <div className="absolute inset-0 w-full h-full">
+          <div className="block md:hidden w-full h-full relative">
+            <video
+              src={getImageUrl(slide?.imageMobile)}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700"
+              poster="/images/banner-placeholder.jpg"
+            />
           </div>
-          <div className="hidden md:flex lg:hidden">
-              <video
-                src={getImageUrl(slide?.imageTablet)}
-                autoPlay
-                muted
-                loop
-                playsInline
-                /* object-cover + inset-0 ensures it fills the aspect-ratio box */
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 "
-                poster="/images/banner-placeholder.jpg"
-              />
+          <div className="hidden md:block lg:hidden w-full h-full relative">
+            <video
+              src={getImageUrl(slide?.imageTablet)}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700"
+              poster="/images/banner-placeholder.jpg"
+            />
           </div>
-          <div className="hidden lg:flex">
-              <video
-                src={getImageUrl(slide?.image)}
-                autoPlay
-                muted
-                loop
-                playsInline
-                /* object-cover + inset-0 ensures it fills the aspect-ratio box */
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700"
-                poster="/images/banner-placeholder.jpg"
-              />
+          <div className="hidden lg:block w-full h-full relative">
+            <video
+              src={getImageUrl(slide?.image)}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700"
+              poster="/images/banner-placeholder.jpg"
+            />
           </div>
         </div>
       ) : (
-        <div>
-          <div className="flex md:hidden">
-          <Image
-          src={getImageUrl(slide?.imageMobile)}
-          alt={slide.title || "Promotion Banner"}
-          fill
-          priority={isPriority}
-          /* object-cover maintains visual consistency without stretching */
-          className="object-cover transition-transform duration-700 "
-          sizes="100vw"
-          quality={90} // 100 is often overkill; 90 saves bandwidth with no visible loss
-          unoptimized 
-        />
-        </div>
-        <div className="hidden md:flex lg:hidden">
-          <Image
-          src={getImageUrl(slide?.imageTablet)}
-          alt={slide.title || "Promotion Banner"}
-          fill
-          priority={isPriority}
-          /* object-cover maintains visual consistency without stretching */
-          className="object-cover transition-transform duration-700 "
-          sizes="100vw"
-          quality={90} // 100 is often overkill; 90 saves bandwidth with no visible loss
-          unoptimized 
-        />
-        </div>
-        <div className="hidden lg:flex">
-          <Image
-          src={getImageUrl(slide?.image)}
-          alt={slide.title || "Promotion Banner"}
-          fill
-          priority={isPriority}
-          /* object-cover maintains visual consistency without stretching */
-          className="object-cover transition-transform duration-700 "
-          sizes="100vw"
-          quality={90} // 100 is often overkill; 90 saves bandwidth with no visible loss
-          unoptimized 
-        />
-        </div>
+        <div className="absolute inset-0 w-full h-full">
+          <div className="block md:hidden w-full h-full relative">
+            <Image
+              src={getImageUrl(slide?.imageMobile)}
+              alt={slide.title || "Promotion Banner"}
+              fill
+              priority={isPriority}
+              className="object-cover transition-transform duration-700 scale-[1.03] origin-top"
+              sizes="100vw"
+              quality={90}
+              unoptimized 
+            />
+          </div>
+          <div className="hidden md:block lg:hidden w-full h-full relative">
+            <Image
+              src={getImageUrl(slide?.imageTablet)}
+              alt={slide.title || "Promotion Banner"}
+              fill
+              priority={isPriority}
+              className="object-cover transition-transform duration-700 scale-[1.03] origin-top"
+              sizes="100vw"
+              quality={90}
+              unoptimized 
+            />
+          </div>
+          <div className="hidden lg:block w-full h-full relative">
+            <Image
+              src={getImageUrl(slide?.image)}
+              alt={slide.title || "Promotion Banner"}
+              fill
+              priority={isPriority}
+              className="object-cover transition-transform duration-700 scale-[1.03] origin-top"
+              sizes="100vw"
+              quality={90}
+              unoptimized 
+            />
+          </div>
         </div>
       )}
 

@@ -16,7 +16,7 @@ export default function SwiperWrapper({ slides }) {
       className="w-full h-full"
     >
       {slides.map((slide, index) => (
-        <SwiperSlide key={slide._id}>
+        <SwiperSlide key={slide._id} className="h-full">
           <BannerSlide slide={slide} isPriority={index === 0} />
         </SwiperSlide>
       ))}

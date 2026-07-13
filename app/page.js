@@ -27,7 +27,7 @@ export default async function Home() {
       case 'COLLECTION':
         return <Suspense fallback={<CollectionSkeleton/>}><CollectionGridComponent key={component?._id} {...component} /></Suspense>
       case 'SLIDER':
-        return <div className="md:p-2"><Banner key={component._id} data={component.slider_component} title={component.title} description={component.description} /></div>;
+        return <Banner key={component._id} data={component.slider_component} title={component.title} description={component.description} />;
       case 'GALLERY':
         return <GalleryComponent key={component._id} {...component} />;
       case 'IMAGE':
