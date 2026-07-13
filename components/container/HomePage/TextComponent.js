@@ -24,6 +24,7 @@ export default function TextComponent({ text_component, description }) {
           <TextContentBlock 
             key={index} 
             data={component} 
+            index={index}
           />
         ))}
       </div>
@@ -31,9 +32,10 @@ export default function TextComponent({ text_component, description }) {
   );
 }
 
-const TextContentBlock = ({ data }) => {
+const TextContentBlock = ({ data, index }) => {
+  const isEven = index % 2 === 0;
   const renderContent = () => (
-    <div className="flex flex-col md:flex-row gap-10 md:gap-16 w-full items-center">
+    <div className={`flex flex-col ${isEven ? "md:flex-row" : "md:flex-row-reverse"} gap-10 md:gap-16 w-full items-center`}>
       {/* Editorial Image Wrapper */}
       {data.image && (
         <div className="md:w-[48%] w-full overflow-hidden rounded-2xl shadow-md border border-gray-100/50 aspect-[4/3] relative group">
