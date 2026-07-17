@@ -120,20 +120,7 @@ export default function VendorRegistrationForm() {
 
   return (
     <div className="bg-white rounded-xl border border-slate-200 overflow-hidden">
-      <div className="flex flex-col md:flex-row w-full borde overflow-hidden border-b border-slate-400">
-      
-      {/* Vendor Option */}
-      <Link 
-        href="/user/register" 
-        className={`${baseCardStyles}  text-brand-primary hover:bg-brand-secondary md:border-r`}
-      >
-        Customer Registration
-      </Link>
-      {/* Customer Option */}
-      <div className={`${baseCardStyles} bg-brand-secondary text-brand-primary border-b md:border-b-0  border-brand-primary`}>
-        Vendor Registration
-      </div>
-    </div>
+
 
     <div className='p-6 sm:p-10'>
       {/* Message Box */}

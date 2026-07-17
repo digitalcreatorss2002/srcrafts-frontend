@@ -79,20 +79,7 @@ export default function CustomerRegistrationForm() {
     const baseCardStyles = "flex-1 flex items-center justify-center p-6 text-md font-bold transition-all duration-200 hover:opacity-90 ";
     return (
     <div className="bg-white shadow-xl rounded-2xl  border border-slate-200 max-w-lg mx-auto my-12 overflow-hidden">
-      <div className="flex flex-col md:flex-row w-full borde overflow-hidden border-b border-slate-400">
-      {/* Customer Option */}
-      <div className={`${baseCardStyles} bg-brand-secondary text-brand-primary border-b md:border-b-0 md:border-r border-brand-primary`}>
-        Customer Registration
-      </div>
 
-      {/* Vendor Option */}
-      <Link 
-        href="/vendor/register" 
-        className={`${baseCardStyles}  text-brand-primary hover:bg-brand-secondary`}
-      >
-        Vendor Registration
-      </Link>
-    </div>
 
       <div className='p-6'>
 

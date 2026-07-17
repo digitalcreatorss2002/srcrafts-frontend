@@ -73,10 +73,7 @@ const GuestMenu = ({ hover }) => (
             </div>
             <ArrowRight size={16} className="text-brand-secondary" />
           </Link>
-          <Link href='/vendor/register' className='flex items-center gap-3 p-4 hover:bg-slate-50 text-brand-primary'>
-            <Package size={18} className="text-slate-400" />
-            <span className='font-bold text-sm'>Become a Seller</span>
-          </Link>
+
         </div>
       </div>
     )}
