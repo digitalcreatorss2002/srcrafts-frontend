@@ -10,7 +10,7 @@ import {
 } from '@/redux/wishlist/wishlistSlice';
 import { addToCart } from '@/redux/cart/cartSlice';
 import { getImageUrl, formatPrice } from '@/utils/helperFunction';
-import { toast, Toaster } from 'react-hot-toast';
+import { toast } from 'react-hot-toast';
 import Link from 'next/link';
 import Image from 'next/image';
 import Section from '@/components/container/genericContainer/Section';
@@ -63,7 +63,6 @@ export default function WishlistPage() {
   if (wishlistItems.length === 0) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12">
-        <Toaster position="top-right" />
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="flex flex-col items-center justify-center text-center animate-in fade-in zoom-in duration-700">
             <div className="relative mb-8">
@@ -99,7 +98,6 @@ export default function WishlistPage() {
   return (
     <Section>
       <div className="min-h-screen py-8 bg-gray-50/50">
-        <Toaster position="top-right" />
         <div className="container mx-auto px-4 max-w-7xl">
           {/* Header */}
           <div className="mb-8">
