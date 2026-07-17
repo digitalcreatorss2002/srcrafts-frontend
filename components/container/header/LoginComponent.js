@@ -1,6 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { selectWishlistItemCount } from '@/redux/wishlist/wishlistSlice';
 import { syncCartFromStorage, selectCartItemCount } from '@/redux/cart/cartSlice';
 import SearchBar from './SearchBar';
 import { User, LogOut, LayoutDashboard, Headset, ShoppingBag, ShieldCheck,UserCircle, ChevronDown, ArrowRight, Package, ShoppingCartIcon, HeartPlus } from 'lucide-react';
@@ -143,8 +144,7 @@ const DropdownItem = ({ href, icon, label }) => (
 
 
  function ActionIcons({ cartCount, isMounted }) {
-  // Wishlist count can be connected to Redux later, hardcoding for now as per your snippet
-  const wishListItemCount = 0; 
+  const wishListItemCount = useSelector(selectWishlistItemCount); 
 
   return (
     <div className='flex items-center md:space-x-0'>

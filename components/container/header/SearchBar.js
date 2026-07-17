@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useDebounce } from '@/lib/hooks/useDebounce';
 import axios from 'axios';
 import Link from 'next/link';
+import { getImageUrl } from '@/utils/helperFunction';
 
 const SearchBar = ({ isMobile }) => {
   const [isOpen, setIsOpen] = useState(isMobile);
@@ -91,8 +92,8 @@ const SearchBar = ({ isMobile }) => {
                           <p className="text-[10px] font-bold text-gray-400 uppercase mb-2">Products in {item.name}</p>
                           <div className="space-y-2">
                             {item.products?.map((prod) => (
-                              <Link key={prod._id} href={`/product/${prod.slug}`} className="flex items-center gap-2 p-1 hover:bg-brand-primary/5 rounded">
-                                <img src={prod.media?.[0]} className="w-8 h-8 rounded object-cover" alt="" />
+                              <Link key={prod._id} href={`/products/${prod.slug}`} className="flex items-center gap-2 p-1 hover:bg-brand-primary/5 rounded">
+                                <img src={getImageUrl(prod.media?.[0])} className="w-8 h-8 rounded object-cover" alt="" />
                                 <div className="overflow-hidden">
                                   <p className="text-xs font-medium text-gray-800 truncate">{prod.name}</p>
                                   <p className="text-[10px] text-brand-primary font-bold">₹{prod.sale_price}</p>
@@ -112,8 +113,8 @@ const SearchBar = ({ isMobile }) => {
                 <div className="border-t pt-4">
                   <h3 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Standalone Hits</h3>
                   {data.data.products.map(product => (
-                    <Link key={product._id} href={`/product/${product.slug}`} className="flex items-center gap-3 p-2 hover:bg-gray-50 rounded-lg">
-                      <img src={product.media[0]} alt="" className="w-10 h-10 rounded object-cover" />
+                    <Link key={product._id} href={`/products/${product.slug}`} className="flex items-center gap-3 p-2 hover:bg-gray-50 rounded-lg">
+                      <img src={getImageUrl(product.media?.[0] || product.media[0])} alt="" className="w-10 h-10 rounded object-cover" />
                       <p className="text-sm font-medium text-gray-800 line-clamp-1">{product.name}</p>
                     </Link>
                   ))}
