@@ -2,6 +2,7 @@
 
 import { Package, Truck, Tag, Store, Info } from 'lucide-react';
 import Image from 'next/image';
+import { getImageUrl } from '@/utils/helperFunction';
 
 export default function OrderSummary({
   validatedCart = [],
@@ -66,10 +67,11 @@ export default function OrderSummary({
                     <div className="relative w-14 h-14 md:w-16 md:h-16 shrink-0 rounded-2xl bg-slate-50 border border-slate-100 overflow-hidden">
                       {item.image ? (
                         <Image
-                          src={item.image}
+                          src={getImageUrl(item.image)}
                           alt={item.name}
                           fill
                           className="object-cover group-hover:scale-110 transition-transform duration-500"
+                          unoptimized={true}
                         />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center"><Package className="text-slate-200" /></div>
