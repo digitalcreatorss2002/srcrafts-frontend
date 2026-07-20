@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Mail, Phone, MessageCircle, ArrowRight, Facebook, Instagram, Youtube, Linkedin } from "lucide-react";
+import { Mail, Phone, MessageCircle, ArrowRight, Facebook, Instagram, Youtube, Linkedin, MapPin } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Section from "@/components/container/genericContainer/Section";
@@ -41,21 +41,26 @@ export default function AestheticContact() {
 
             <div className="space-y-8">
               <ContactDetail 
+                icon={<MapPin size={20} />} 
+                label="Corporate Office" 
+                value="B-9 Dwarka More, Sector-15, Dwarka, Delhi - 110059" 
+              />
+              <ContactDetail 
                 icon={<Phone size={20} />} 
                 label="Client Services" 
-                value="+91 (800) 123-4567" 
+                value="+91 8882845062" 
               />
               <ContactDetail 
                 icon={<Mail size={20} />} 
                 label="General Inquiries" 
-                value="hello@luxurybrand.com" 
+                value="info@srcraftscreation.com" 
               />
               <ContactDetail 
                 icon={<MessageCircle size={20} />} 
                 label="WhatsApp Support" 
                 value="Chat with an expert" 
                 isLink
-                link="https://wa.me/919829012345"
+                link="https://wa.me/918882845062"
               />
             </div>
 

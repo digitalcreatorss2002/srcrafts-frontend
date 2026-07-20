@@ -22,18 +22,14 @@ export default function OrderConfirmationClient({ params }) {
     if (isAuthChecking) return;
     const fetchOrder = async () => {
       try {
-
-        if(!token || token === 'undefined'){
-          console.error("OrderConfirmation: Token missing or undefined. User might not be logged in.");
-        return [];
+        const headers = { 'Content-Type': 'application/json' };
+        if (token && token !== 'undefined') {
+          headers['Authorization'] = `Bearer ${token}`;
         }
-        const response = await fetch(`${API_URL}/api/orders/${resolvedParams.id}`,{
-          method:'GET',
+        const response = await fetch(`${API_URL}/api/orders/${resolvedParams.id}`, {
+          method: 'GET',
           cache: 'no-store',
-          headers:{
-            'Content-Type':'application/json',
-            'Authorization': `Bearer ${token}`
-          }
+          headers
         });
         if (response.ok) {
           const data = await response.json();
@@ -54,7 +50,7 @@ export default function OrderConfirmationClient({ params }) {
 
   if (loading) return <OrderSkeleton />;
   if (resolvedParams.id === 'success') return <ThankYouState />;
-  if (!order) return <EmptyState />;
+  if (!order) return <ThankYouState />;
 
   return (
     <div className='min-h-screen bg-slate-50/50 pb-20 font-sans antialiased text-brand-primary'>

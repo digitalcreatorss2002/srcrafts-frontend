@@ -283,9 +283,9 @@ const handlePlaceOrder = async () => {
                       })}
                     </div>
                     <div className="relative flex py-4 items-center">
-                      <div className="flex-grow border-t border-slate-100"></div>
-                      <span className="flex-shrink mx-4 text-[9px] text-slate-400 font-extrabold uppercase tracking-widest">Or edit address below</span>
-                      <div className="flex-grow border-t border-slate-100"></div>
+                      <div className="grow border-t border-slate-100"></div>
+                      <span className="shrink mx-4 text-[9px] text-slate-400 font-extrabold uppercase tracking-widest">Or edit address below</span>
+                      <div className="grow border-t border-slate-100"></div>
                     </div>
                   </div>
                 )}

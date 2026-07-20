@@ -71,14 +71,14 @@ export default async function Footer() {
               <div className="bg-white/5 p-8 rounded-3xl border border-white/10 hover:border-brand-secondary/50 transition-colors">
                 <h4 className="text-brand-secondary text-xs font-black uppercase tracking-widest mb-6">Corporate Office</h4>
                 <div className="space-y-4">
-                  <ContactItem icon={<MapPin size={18}/>} content="Plot 42, Artisan Hub, Vidhyadhar Nagar, Jaipur, RJ" />
-                  <ContactItem icon={<Phone size={18}/>} content="+91 98290 12345" />
+                  <ContactItem icon={<MapPin size={18}/>} content="B-9 Dwarka More, Sector-15, Dwarka, Delhi - 110059" />
+                  <ContactItem icon={<Phone size={18}/>} content="+91 8882845062" />
                 </div>
               </div>
               <div className="bg-white/5 p-8 rounded-3xl border border-white/10 hover:border-brand-secondary/50 transition-colors">
                 <h4 className="text-brand-secondary text-xs font-black uppercase tracking-widest mb-6">Business Inquiry</h4>
                 <div className="space-y-4">
-                  <ContactItem icon={<Mail size={18}/>} content="business@srcraftcreations.com" />
+                  <ContactItem icon={<Mail size={18}/>} content="info@srcraftscreation.com" />
                   <div className="pt-2">
                     <button className="flex items-center gap-2 text-brand-secondary text-xs font-bold group">
                       VISIT HELP CENTER <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform"/>
