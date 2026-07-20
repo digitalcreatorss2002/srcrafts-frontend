@@ -9,7 +9,8 @@ import { toast, Toaster } from 'react-hot-toast';
 import Image from 'next/image';
 import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/navigation';
-import { logoutRequest, loginSuccess } from '@/modules/user/state/userSlice';
+import { logoutSuccess, loginSuccess } from '@/modules/user/state/userSlice';
+import { removeAuthCookieAction } from '@/lib/authActions';
 
 // Simulation of a Service Layer (SOLID: Separation of Concerns)
 const ProfileService = {
@@ -180,10 +181,18 @@ export default function ProfilePage() {
     }
   }, [reduxUser, isAuthChecking, router]);
 
-  const handleLogout = () => {
-    dispatch(logoutRequest());
+  const handleLogout = async () => {
+    try {
+      await removeAuthCookieAction();
+    } catch (e) {
+      console.error("Logout cookie deletion failed:", e);
+    }
+    if (typeof document !== 'undefined') {
+      document.cookie = 'auth-token=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    }
+    dispatch(logoutSuccess());
     toast.success("Logged out successfully");
-    router.push('/');
+    window.location.href = '/';
   };
 
   if (loading) return <div className="h-screen flex items-center justify-center text-brand-primary font-bold">Loading Profile...</div>;

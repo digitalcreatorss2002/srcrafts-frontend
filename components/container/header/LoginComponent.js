@@ -83,13 +83,22 @@ const GuestMenu = ({ hover }) => (
 
 
 
-import { logoutRequest } from '@/modules/user/state/userSlice';
+import { logoutSuccess } from '@/modules/user/state/userSlice';
+import { removeAuthCookieAction } from '@/lib/authActions';
 
 const UserMenu = ({ user, hover }) => {
   const dispatch = useDispatch();
   
-  const handleLogout = () => {
-    dispatch(logoutRequest());
+  const handleLogout = async () => {
+    try {
+      await removeAuthCookieAction();
+    } catch (e) {
+      console.error("Logout cookie deletion failed:", e);
+    }
+    if (typeof document !== 'undefined') {
+      document.cookie = 'auth-token=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    }
+    dispatch(logoutSuccess());
     window.location.href = '/'; 
   };
 

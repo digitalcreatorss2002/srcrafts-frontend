@@ -7,30 +7,27 @@ import InfiniteProductList from '@/modules/collections/compoenets/InfiniteProduc
 import Link from 'next/link';
 import Section from '@/components/container/genericContainer/Section'; 
 
-export default function DynamicCollection({filters,initialData}) {
+export default function DynamicCollection({filters,initialData,slug}) {
 
     const collectionName = initialData?.product_collection?.name || 'Collection';
     return (
-        <div className='px-2  '>
-          
-          <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 md:gap-2 ">
+        <div className='px-3 sm:px-6 py-4 max-w-7xl mx-auto'>
+          <div className="flex flex-col md:flex-row gap-4 lg:gap-6">
             
-            {/* === Sidebar: Filters (1/4 or 1/5 width) === */}
-            <div className="md:col-span-1 my-2 ">
-              <div className="sticky top-12 h-[calc(100vh-6rem)] overflow-y-auto">
-                <FilterSidebar slug={slug} currentFilters={filters} />
-              </div>
+            {/* === Filter Component (Drawer on Mobile, Sticky Sidebar on Desktop) === */}
+            <div className="w-full md:w-64 lg:w-72 shrink-0">
+              <FilterSidebar slug={slug} currentFilters={filters} />
             </div>
             
-            {/* === Product List: Infinite Scroll (3/4 or 4/5 width) === */}
-            <div className="md:col-span-3 lg:col-span-4">
-              <Section >
-              <nav className="text-sm font-medium text-gray-500 mb-4">
-                <Link href="/" className="hover:text-gray-700 transition">Home</Link> 
-                <span className="mx-2">/</span> 
-                <span className="text-gray-700 font-semibold">{collectionName}</span>
-              </nav>
-              <h1 className="text-3xl font-extrabold text-gray-900">{collectionName}</h1>
+            {/* === Product List: Infinite Scroll === */}
+            <div className="flex-1 min-w-0">
+              <Section>
+                <nav className="text-xs sm:text-sm font-medium text-gray-500 mb-2 sm:mb-4">
+                  <Link href="/" className="hover:text-gray-700 transition">Home</Link> 
+                  <span className="mx-2">/</span> 
+                  <span className="text-gray-700 font-semibold">{collectionName}</span>
+                </nav>
+                <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-4">{collectionName}</h1>
               </Section>
               <InfiniteProductList 
                 initialData={initialData} 
@@ -43,5 +40,4 @@ export default function DynamicCollection({filters,initialData}) {
           </div>
         </div>
     );
-    
 }
