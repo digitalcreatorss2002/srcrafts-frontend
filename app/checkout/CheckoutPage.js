@@ -113,13 +113,13 @@ export default function CheckoutPage() {
     }
   }, [dispatch]);
 
-  // Redirect if cart is empty
+  // Redirect if cart is empty (only when not actively placing an order)
   useEffect(() => {
-    if (cartItems.length === 0 && cartStatus !== 'validating') {
+    if (cartItems.length === 0 && cartStatus !== 'validating' && !isPlacingOrder) {
       toast.error('Your cart is empty!');
       router.push('/cart');
     }
-  }, [cartItems, cartStatus, router]);
+  }, [cartItems, cartStatus, router, isPlacingOrder]);
 
   // Show validation errors
   useEffect(() => {
@@ -277,18 +277,18 @@ export default function CheckoutPage() {
       }
 
       const data = await response.json();
+      const createdOrderId = data.orders?.[0]?._id || data.order?._id || data._id || 'success';
 
-      // Clear cart
+      // Clear cart AFTER getting order ID
       dispatch(clearCart());
 
       toast.success('Order placed successfully!');
 
       // Redirect to confirmation page
-      router.push(`/order-confirmation/${data.orders?.[0]?._id || 'success'}`);
+      window.location.href = `/order-confirmation/${createdOrderId}`;
     } catch (error) {
-      throw error;
-    } finally {
       setIsPlacingOrder(false);
+      throw error;
     }
   };
 

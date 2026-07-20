@@ -3,10 +3,10 @@
 import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useState, useMemo } from 'react';
 import { debounce } from '@/utils/debounce';
-import { Search, RotateCcw, SlidersHorizontal, X, Check } from 'lucide-react';
+import { Search, RotateCcw, SlidersHorizontal, X, Check, ArrowUpDown, Sparkles, Box } from 'lucide-react';
 
 // --- Constants ---
-const MIN_LIMIT = 500;
+const MIN_LIMIT = 0;
 const MAX_LIMIT = 5000000;
 const STEP = 500;
 
@@ -22,20 +22,26 @@ export default function FilterSidebar({ currentFilters }) {
   const searchParams = useSearchParams();
 
   // 1. Local UI States
-  const [localSearch, setLocalSearch] = useState(currentFilters['search[name]'] || '');
+  const [localSearch, setLocalSearch] = useState(currentFilters['search[name]'] || currentFilters.search || '');
   const [priceRange, setPriceRange] = useState({
     min: Number(currentFilters.min_price) || MIN_LIMIT,
     max: Number(currentFilters.max_price) || MAX_LIMIT
   });
+  const [sortBy, setSortBy] = useState(currentFilters.sort || '');
+  const [inStockOnly, setInStockOnly] = useState(currentFilters.in_stock === 'true');
+  const [featuredOnly, setFeaturedOnly] = useState(currentFilters.featured === 'true');
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   // Sync state with URL
   useEffect(() => {
-    setLocalSearch(currentFilters['search[name]'] || '');
+    setLocalSearch(currentFilters['search[name]'] || currentFilters.search || '');
     setPriceRange({
       min: Number(currentFilters.min_price) || MIN_LIMIT,
       max: Number(currentFilters.max_price) || MAX_LIMIT
     });
+    setSortBy(currentFilters.sort || '');
+    setInStockOnly(currentFilters.in_stock === 'true');
+    setFeaturedOnly(currentFilters.featured === 'true');
   }, [currentFilters]);
 
   // 2. URL Strategy
@@ -72,6 +78,24 @@ export default function FilterSidebar({ currentFilters }) {
     debouncedUpdate({ min_price: newRange.min, max_price: newRange.max });
   };
 
+  const handleSortChange = (e) => {
+    const val = e.target.value;
+    setSortBy(val);
+    updateUrl({ sort: val });
+  };
+
+  const handleInStockToggle = (e) => {
+    const checked = e.target.checked;
+    setInStockOnly(checked);
+    updateUrl({ in_stock: checked ? 'true' : '' });
+  };
+
+  const handleFeaturedToggle = (e) => {
+    const checked = e.target.checked;
+    setFeaturedOnly(checked);
+    updateUrl({ featured: checked ? 'true' : '' });
+  };
+
   const handleReset = () => {
     router.push(pathname);
     setIsMobileOpen(false);
@@ -80,24 +104,47 @@ export default function FilterSidebar({ currentFilters }) {
   const hasActiveFilters = Boolean(
     localSearch || 
     priceRange.min > MIN_LIMIT || 
-    priceRange.max < MAX_LIMIT
+    priceRange.max < MAX_LIMIT ||
+    sortBy ||
+    inStockOnly ||
+    featuredOnly
   );
 
   const filterContent = (
     <div className="p-6 space-y-8 overflow-y-auto flex-1">
       {/* Search Section */}
       <section className="space-y-3">
-        <label className="text-[11px] font-black text-slate-400 uppercase tracking-widest">Product Search</label>
+        <label className="text-[11px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
+          <Search size={14} className="text-brand-primary" /> Product Search
+        </label>
         <div className="relative group">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-brand-primary transition-colors" size={16} />
           <input
             type="text"
-            placeholder="Search items..."
+            placeholder="Search items by name..."
             className="w-full pl-10 pr-4 py-2.5 bg-slate-100 border-none rounded-lg focus:ring-2 focus:ring-brand-primary/20 focus:bg-white outline-none transition-all text-sm"
             onChange={(e) => handleSearchChange(e.target.value)}
             value={localSearch}
           />
         </div>
+      </section>
+
+      {/* Sort By Section */}
+      <section className="space-y-3">
+        <label className="text-[11px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
+          <ArrowUpDown size={14} className="text-brand-primary" /> Sort Products
+        </label>
+        <select
+          value={sortBy}
+          onChange={handleSortChange}
+          className="w-full px-3 py-2.5 bg-slate-100 border border-slate-200 rounded-lg text-xs font-bold text-slate-700 outline-none focus:ring-2 focus:ring-brand-primary/20 transition-all cursor-pointer"
+        >
+          <option value="">Default Sorting</option>
+          <option value="price_asc">Price: Low to High</option>
+          <option value="price_desc">Price: High to Low</option>
+          <option value="newest">Newest Arrivals</option>
+          <option value="popular">Popularity</option>
+        </select>
       </section>
 
       {/* Price Slider Section */}
@@ -163,6 +210,37 @@ export default function FilterSidebar({ currentFilters }) {
             />
           </div>
         </div>
+      </section>
+
+      {/* Availability & Feature Toggles */}
+      <section className="space-y-4 pt-4 border-t border-slate-100">
+        <label className="text-[11px] font-black text-slate-400 uppercase tracking-widest block">Additional Filters</label>
+        
+        <label className="flex items-center justify-between p-3 bg-slate-50 border border-slate-200/60 rounded-xl cursor-pointer hover:border-brand-primary transition-all">
+          <div className="flex items-center gap-2.5">
+            <Box size={16} className="text-emerald-600" />
+            <span className="text-xs font-bold text-slate-700">In Stock Only</span>
+          </div>
+          <input
+            type="checkbox"
+            checked={inStockOnly}
+            onChange={handleInStockToggle}
+            className="w-4 h-4 rounded border-slate-300 text-brand-primary focus:ring-brand-primary cursor-pointer"
+          />
+        </label>
+
+        <label className="flex items-center justify-between p-3 bg-slate-50 border border-slate-200/60 rounded-xl cursor-pointer hover:border-brand-primary transition-all">
+          <div className="flex items-center gap-2.5">
+            <Sparkles size={16} className="text-amber-500" />
+            <span className="text-xs font-bold text-slate-700">Featured Specials</span>
+          </div>
+          <input
+            type="checkbox"
+            checked={featuredOnly}
+            onChange={handleFeaturedToggle}
+            className="w-4 h-4 rounded border-slate-300 text-brand-primary focus:ring-brand-primary cursor-pointer"
+          />
+        </label>
       </section>
 
       <style>{`
