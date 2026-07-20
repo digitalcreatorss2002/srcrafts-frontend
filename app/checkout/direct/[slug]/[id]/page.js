@@ -207,34 +207,34 @@ const handlePlaceOrder = async () => {
   if (loading) return <CheckoutLoading />;
 
   return (
-    <div className="flex items-center justify-center p-4 bg-slate-50 min-h-[90vh]">
+    <div className="flex items-center justify-center p-2 sm:p-4 bg-slate-50 min-h-screen lg:min-h-[90vh] pb-24 md:pb-6">
       <Toaster position="top-right" />
       
-      {/* Main Container: Fixed Height 70vh */}
-      <div className="w-full max-w-5xl h-[75vh] bg-white  border border-brand-primary/5 overflow-hidden flex flex-col">
+      {/* Main Container: Mobile responsive (h-auto on mobile, fixed h-[75vh] on desktop) */}
+      <div className="w-full max-w-5xl h-auto lg:h-[75vh] bg-white border border-brand-primary/5 rounded-2xl md:rounded-3xl overflow-hidden flex flex-col shadow-sm">
         
         {/* Compact Header */}
-        <header className="px-6 py-4 border-b flex justify-between items-center bg-white shrink-0">
-          <div className="flex items-center gap-4">
+        <header className="px-4 sm:px-6 py-4 border-b flex justify-between items-center bg-white shrink-0">
+          <div className="flex items-center gap-3 sm:gap-4">
             <Link href={`/products/${slug}`} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
               <ArrowLeft size={20} className="text-brand-primary" />
             </Link>
             <div>
-              <h1 className="font-black text-brand-primary text-xl tracking-tighter uppercase">Checkout</h1>
-              <p className="text-[10px] text-brand-secondary font-bold uppercase tracking-widest">Secure encrypted session</p>
+              <h1 className="font-black text-brand-primary text-lg sm:text-xl tracking-tighter uppercase">Checkout</h1>
+              <p className="text-[9px] sm:text-[10px] text-brand-secondary font-bold uppercase tracking-widest">Secure encrypted session</p>
             </div>
           </div>
-          <div className="flex items-center gap-2 px-3 py-1 bg-brand-accent/10 rounded-full border border-brand-accent/20">
+          <div className="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 bg-brand-accent/10 rounded-full border border-brand-accent/20">
             <ShieldCheck size={14} className="text-brand-accent" />
-            <span className="text-[10px] font-bold text-brand-primary">SECURE PAY</span>
+            <span className="text-[9px] sm:text-[10px] font-bold text-brand-primary">SECURE PAY</span>
           </div>
         </header>
 
-        {/* Content Body: Two Columns */}
-        <div className="flex flex-1 overflow-hidden">
+        {/* Content Body: Responsive Flex (Column on Mobile, Row on Desktop) */}
+        <div className="flex flex-col lg:flex-row flex-1 overflow-visible lg:overflow-hidden">
           
-          {/* Left Column: Form Steps (Scrollable) */}
-          <div className="flex-1 overflow-y-auto p-6 scrollbar-hide border-r border-slate-50">
+          {/* Left Column: Form Steps (Scrollable on desktop, natural flow on mobile) */}
+          <div className="flex-1 overflow-y-visible lg:overflow-y-auto p-4 sm:p-6 scrollbar-hide border-b lg:border-b-0 lg:border-r border-slate-100">
             <div className="space-y-4 max-w-xl mx-auto">
               
               <StepCard 
@@ -255,7 +255,7 @@ const handlePlaceOrder = async () => {
                             key={idx}
                             type="button"
                             onClick={() => setAddressData(addr)}
-                            className={`text-left p-4 rounded-xl border-2 transition-all relative overflow-hidden flex flex-col justify-between ${
+                            className={`text-left p-3 sm:p-4 rounded-xl border-2 transition-all relative overflow-hidden flex flex-col justify-between ${
                               isSelected 
                                 ? 'bg-brand-primary/5 border-brand-secondary shadow-[0_0_10px_rgba(218,172,71,0.1)]' 
                                 : 'bg-slate-50 border-slate-100 hover:bg-slate-100/50'
@@ -340,7 +340,7 @@ const handlePlaceOrder = async () => {
           </div>
 
           {/* Right Column: Order Summary (Scrollable) */}
-          <aside className="w-80 bg-slate-50/50 overflow-y-auto p-6 shrink-0">
+          <aside className="w-full lg:w-80 bg-slate-50/50 overflow-y-visible lg:overflow-y-auto p-4 sm:p-6 shrink-0">
             <div className="h-full flex flex-col">
               <h3 className="text-xs font-black text-brand-primary uppercase tracking-tighter mb-4 opacity-50">Order Summary</h3>
               <div className="flex-1">
