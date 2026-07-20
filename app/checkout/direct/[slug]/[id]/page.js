@@ -216,7 +216,7 @@ const handlePlaceOrder = async () => {
         {/* Compact Header */}
         <header className="px-6 py-4 border-b flex justify-between items-center bg-white shrink-0">
           <div className="flex items-center gap-4">
-            <Link href={`/${slug}`} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
+            <Link href={`/products/${slug}`} className="p-2 hover:bg-slate-100 rounded-full transition-colors">
               <ArrowLeft size={20} className="text-brand-primary" />
             </Link>
             <div>
