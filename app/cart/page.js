@@ -133,8 +133,20 @@ export default function CartPage() {
           {/* Cart Items - Left Side */}
           <div className='lg:col-span-2 space-y-4'>
             {Object.entries(cartByVendor).map(([vendorId, { items }]) => {
-              // Get vendor name from first item (if available)
-              const vendorName = items[0]?.vendorName || `Vendor ${vendorId}`;
+              const firstItem = items[0];
+              let vendorName = firstItem?.vendorName;
+
+              if (!vendorName || vendorName === 'undefined') {
+                if (typeof firstItem?.vendor === 'object' && firstItem?.vendor !== null) {
+                  vendorName = firstItem.vendor.name || firstItem.vendor.store_name || firstItem.vendor.username;
+                } else if (typeof firstItem?.vendor === 'string' && !firstItem.vendor.includes('[object')) {
+                  vendorName = firstItem.vendor;
+                }
+              }
+
+              if (!vendorName || vendorName.includes('[object')) {
+                vendorName = 'Artisan Store';
+              }
 
               return (
                 <VendorCartSection

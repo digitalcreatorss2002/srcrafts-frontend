@@ -71,7 +71,7 @@ const cartSlice = createSlice({
           price: productData?.price || productData?.sale_price || 0,
           regularPrice: productData?.regularPrice || productData?.regular_price || 0,
           vendor: productData?.vendor || null,
-          vendorName: productData?.vendorName || '',
+          vendorName: productData?.vendorName || (typeof productData?.vendor === 'object' ? productData?.vendor?.name || productData?.vendor?.store_name : '') || '',
           stock: productData?.stock || 0,
           addedAt: new Date().toISOString(),
         });
@@ -194,7 +194,7 @@ export const selectCartStatus = (state) => state.cart?.status || 'idle';
 export const selectValidationErrors = (state) =>
   state.cart?.validationErrors || [];
 
-// Group cart items by vendor
+// Group cart items by vendor safely
 export const selectCartByVendor = (state) => {
   const grouped = {};
   const items = state.cart?.items;
@@ -202,7 +202,13 @@ export const selectCartByVendor = (state) => {
   if (!Array.isArray(items)) return grouped;
 
   items.forEach((item) => {
-    const vendorId = item.vendor || 'unknown';
+    let vendorId = 'unknown';
+    if (typeof item.vendor === 'object' && item.vendor !== null) {
+      vendorId = item.vendor._id || item.vendor.name || 'unknown';
+    } else if (item.vendor) {
+      vendorId = String(item.vendor);
+    }
+
     if (!grouped[vendorId]) {
       grouped[vendorId] = {
         items: [],
